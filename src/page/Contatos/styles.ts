@@ -7,11 +7,15 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;
 export const BoxList = styled.ul`
-width: 50%;
-margin-top: 50px;
-`
+  width: 50%;
+  margin-top: 50px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 
 export const ListaItens = styled.li`
   display: flex;
@@ -41,12 +45,11 @@ export const GrupButton = styled.div`
   padding-left: 30px;
   margin-top: 8px;
 
-  button{
+  button {
     background-color: transparent;
     border: none;
   }
-`
-
+`;
 
 export const BotaoNav = styled.button`
   background-color: transparent;
@@ -54,13 +57,18 @@ export const BotaoNav = styled.button`
 `;
 
 export const BoxIcon = styled.div`
-display: flex;
-width: 50%;
-justify-content: space-between;
-margin-left: 25%;
-margin-bottom: 50px;
-`
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  margin-left: 25%;
+  margin-bottom: 50px;
+
+  @media (max-width: 768px) {
+    margin-left: 0px;
+    gap: 50px;
+  }
+`;
 export const Nav = styled.div`
-display: flex;
-gap: 10px;
-`
+  display: flex;
+  gap: 5px;
+`;
