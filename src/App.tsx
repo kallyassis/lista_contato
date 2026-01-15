@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router";
+
+import Contatos from "./page/Contatos";
+import StyleGlobal, { Container } from "./styles/styleGlobal";
+import Adicionar from "./page/Adicionar";
+import EditarContato from "./page/EditarContatos";
+
+
+const rotas = createBrowserRouter([
+  {
+    path: "/",
+    element: <Contatos />,
+  },
+  {
+    path: "adicionar",
+    element: <Adicionar />,
+  },
+  {
+    path: "editar",
+    element: <EditarContato />,
+  },
+
+]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <StyleGlobal />
+      <Container>
+        <RouterProvider router={rotas} />
+      </Container>
+    </>
   );
 }
 

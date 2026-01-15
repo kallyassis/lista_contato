@@ -1,0 +1,66 @@
+import styled from "styled-components";
+
+export const Content = styled.div`
+  overflow-y: scroll;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+export const BoxList = styled.ul`
+width: 50%;
+margin-top: 50px;
+`
+
+export const ListaItens = styled.li`
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #8a8a8d;
+  padding-top: 4px;
+
+  p {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #000;
+  }
+
+  span {
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: #404043fb;
+    padding-left: 30px;
+  }
+`;
+
+export const GrupButton = styled.div`
+  display: flex;
+  gap: 4px;
+  padding-left: 30px;
+  margin-top: 8px;
+
+  button{
+    background-color: transparent;
+    border: none;
+  }
+`
+
+
+export const BotaoNav = styled.button`
+  background-color: transparent;
+  border: none;
+`;
+
+export const BoxIcon = styled.div`
+display: flex;
+width: 50%;
+justify-content: space-between;
+margin-left: 25%;
+margin-bottom: 50px;
+`
+export const Nav = styled.div`
+display: flex;
+gap: 10px;
+`
