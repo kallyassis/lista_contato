@@ -8,4 +8,5 @@ export interface Contact {
 export interface ContactState  {
   contats: Contact[];
   currentContact: Contact | null;
+  search: string;
 }

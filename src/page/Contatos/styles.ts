@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Content = styled.div`
   overflow-y: scroll;
   scrollbar-width: none;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,6 +55,20 @@ export const GrupButton = styled.div`
 export const BotaoNav = styled.button`
   background-color: transparent;
   border: none;
+`;
+
+export const BoxInput = styled.div`
+  input {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+    flex-direction: column;
+  }
 `;
 
 export const BoxIcon = styled.div`

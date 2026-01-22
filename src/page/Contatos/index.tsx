@@ -1,30 +1,38 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { RootState, AppDispatch } from "../../store";
-import { removeContact, setCurrentContact } from "../../store/reducer/ContactSlice";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
-
 import EditIcon from "@mui/icons-material/Edit";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 import { Container } from "../../styles/styleGlobal";
+import { AppDispatch } from "../../store";
+import {
+  removeContact,
+  setCurrentContact,
+  setSearch,
+  selectorFilteredContacts,
+} from "../../store/reducer/ContactSlice";
 import {
   BotaoNav,
   BoxIcon,
+  BoxInput,
   BoxList,
   Content,
   GrupButton,
   ListaItens,
   Nav,
 } from "./styles";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { useState } from "react";
 
 function Contatos() {
-  const contacts = useSelector((state: RootState) => state.contacts);
+  const contacts = useSelector(selectorFilteredContacts);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  
+
+  const [showSearch, setShowSearch] = useState(false);
 
   return (
     <>
@@ -40,15 +48,23 @@ function Contatos() {
             <BotaoNav onClick={() => navigate("/adicionar")} type="button">
               <AddIcon />
             </BotaoNav>
-            <BotaoNav>
+            <BoxInput onClick={() => setShowSearch(!showSearch)}>
               <SearchIcon />
-            </BotaoNav>
+              {showSearch && (
+                <input
+                  type="text"
+                  placeholder="Buscar contato..."
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => dispatch(setSearch(e.target.value))}
+                />
+              )}
+            </BoxInput>
           </Nav>
         </BoxIcon>
         <Content>
-          <p>{contacts.contats.length} contatos com numeros de telefone</p>
+          <p>{contacts.length} contatos com numeros de telefone</p>
           <BoxList>
-            {contacts.contats.map((contact) => (
+            {contacts.map((contact) => (
               <ListaItens key={contact.id}>
                 <p>
                   <AccountCircle sx={{ fontSize: 28, color: "#502000" }} />
@@ -60,7 +76,7 @@ function Contatos() {
                   <button
                     onClick={() => {
                       dispatch(setCurrentContact(contact));
-                      navigate('/editar')
+                      navigate("/editar");
                     }}
                     type="button"
                   >
@@ -82,6 +98,5 @@ function Contatos() {
     </>
   );
 }
-
 
 export default Contatos;
